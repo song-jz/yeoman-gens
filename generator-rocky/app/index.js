@@ -5,7 +5,7 @@ var Generator = require('yeoman-generator'),
     fs = require('fs'),
     path = require('path');
 
-var open = require("open");
+
 
 module.exports = class extends Generator {
     // The name `constructor` is important here
@@ -74,7 +74,7 @@ module.exports = class extends Generator {
         const pkgJson = {
             devDependencies: {
                 eslint: '^3.15.0',
-                open: '^0.0.5'
+
             },
             dependencies: {
                 react: '^16.2.0'
