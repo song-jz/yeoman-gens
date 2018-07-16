@@ -33,12 +33,6 @@ module.exports = class extends Generator {
             },
             {
                 type: 'input',
-                name: 'componentName',
-                message: '输入插件名称',
-                default: this.appname
-            },
-            {
-                type: 'input',
                 name: 'projectAuthor',
                 message: '项目开发者',
                 store: true,
@@ -72,12 +66,20 @@ module.exports = class extends Generator {
 
         //package.json dependencies
         const pkgJson = {
+            scripts: {
+                "start": "webpack-dev-server --config rocky-web/build/webpack.config.js"
+            },
             devDependencies: {
-                eslint: '^3.15.0',
-
+                "eslint": '^3.15.0',
             },
             dependencies: {
-                react: '^16.2.0'
+                "@types/react": "^16.1.0",
+                "@types/react-dom": "^16.0.4",
+                "react": '^16.2.0',
+                "react-dom": "^16.2.0",
+                "webpack": "^1.12.13",
+                "webpack-dev-server": "^1.13.0",
+                "webpack-merge": "^4.1.0"
             }
         };
 
@@ -88,7 +90,10 @@ module.exports = class extends Generator {
         this.npmInstall();
     }
     end() {
-        this.spawnCommand('node', ['rocky-web/server.js']);
-
+        // this.spawnCommand('node', ['rocky-web/server.js']); //本地写的node脚本
+        this.spawnCommand('npm', ['start']);
+        setTimeout(() => {
+            require('child_process').exec('open http://localhost:6000/index.html'); //打开浏览器
+        }, 2000)
     }
 };
