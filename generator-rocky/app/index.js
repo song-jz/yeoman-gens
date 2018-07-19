@@ -56,7 +56,7 @@ module.exports = class extends Generator {
         this.log('根目录', a)
 
         var b = this.sourceRoot();
-        this.log('src', b)
+        this.log('模板目录', b)
 
         //copy templates
         this.fs.copyTpl(
@@ -66,6 +66,7 @@ module.exports = class extends Generator {
 
         //package.json dependencies
         const pkgJson = {
+            private: true,
             scripts: {
                 "start": "webpack-dev-server --config rocky-web/build/webpack.config.js"
             },
@@ -79,7 +80,8 @@ module.exports = class extends Generator {
                 "react-dom": "^16.2.0",
                 "webpack": "^1.12.13",
                 "webpack-dev-server": "^1.13.0",
-                "webpack-merge": "^4.1.0"
+                "webpack-merge": "^4.1.0",
+                "lodash": '^4.17.4'
             }
         };
 
