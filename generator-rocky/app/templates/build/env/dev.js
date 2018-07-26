@@ -3,19 +3,13 @@ let perConf = require('../config/bizConfig.json');
 let baseConf = require('./base.js');
 let envConf = merge(baseConf, {
     devtool: 'inline-source-map',
+    // entry: ['webpack/hot/dev-server'],
     devServer: {
-        // contentBase: './rocky-web',
+        contentBase: './rocky-web/public/',
         host: perConf.host || 'localhost',
-        port: '6000',
+        port: '8100',
         inline: true,//可以监控js变化
-        hot: true,//热启动
-        clientLogLevel: 'info',
-        watchOptions: {
-            ignore: /node_modules/
-        },
-        proxy: {
-
-        }
+        hot: true//热启动
     }
 });
 

@@ -1,31 +1,42 @@
-let path = require('path')
+let path = require('path');
+let webpack = require('webpack');
+const rootDir = process.cwd() + "/rocky-web/" //跟地址
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: __dirname + "/app/main.js",//已多次提及的唯一入口文件
+    entry: rootDir + "app/main.js",//已多次提及的唯一入口文件
     output: {
-        path: __dirname + "/public",//打包后的文件存放的地方
+        path: rootDir + "dist",//打包后的文件存放的地方
         filename: "bundle.js"//打包后输出文件的文件名
     },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),//热加载
+        new HtmlWebpackPlugin({
+            template: rootDir + "app/index.tmpl.html"//new 一个这个插件的实例，并传入相关的参数
+        })
+    ],
     module: {
         rules: [{
-            test: /\.css$/,
-            use: [
-                'style-loader',
-                'css-loader'
-            ]
-        }, {
-            test: /\.(png|svg|jpg|gif)$/,
-            use: [
-                'file-loader'
-            ]
-        }, {
-            test: /\.(woff|woff2|eot|ttf|otf)$/,
-            use: [
-                'file-loader'
-            ]
-        }]
+            test: /(\.jsx|\.js)$/,
+            use: {
+                loader: "babel-loader",
+                options: {
+                    "presets": [
+                        "env", "react"
+                    ]
+                }
+            },
+            include: rootDir + "app/",
+            exclude: /node_modules/
+        },
+        {
+            test: /\.tsx?$/,
+            use: 'ts-loader',
+            exclude: /node_modules/
+        }
+        ]
     },
-    // resolve: {
-    //     extensions: ['.tsx', '.ts', '.js']
-    // }
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js']
+    }
 }

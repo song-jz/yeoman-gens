@@ -7,6 +7,7 @@ var Generator = require('yeoman-generator'),
 
 
 
+
 module.exports = class extends Generator {
     // The name `constructor` is important here
     constructor(args, opts) {
@@ -24,26 +25,20 @@ module.exports = class extends Generator {
     }
 
     prompting() {
-        var questions = [
-            {
-                type: 'input',
-                name: 'projectName',
-                message: '输入项目名称',
-                default: this.appname
-            },
-            {
-                type: 'input',
-                name: 'projectAuthor',
-                message: '项目开发者',
-                store: true,
-                default: 'johnzhu'
-            }, {
-                type: 'input',
-                name: 'projectVersion',
-                message: '项目版本号',
-                default: '0.0.1'
+        var a = this.destinationRoot();
+        this.log('根目录', a)
+        var b = this.sourceRoot();
+        this.log('模板目录', b)
+
+        var questions = require(b + '/configs/questionsConfig.json')
+        //项目名字默认写成自己当前创建的文件夹
+        var appname = this.appname;
+        _.map(questions, function (item) {
+            if (item.name == 'projectAuthor') {
+                item.default = appname;
             }
-        ]
+        })
+
         return this.prompt(questions).then(
             function (answers) {
                 for (var item in answers) {
@@ -52,11 +47,7 @@ module.exports = class extends Generator {
             }.bind(this));
     }
     writing() {
-        var a = this.destinationRoot();
-        this.log('根目录', a)
 
-        var b = this.sourceRoot();
-        this.log('模板目录', b)
 
         //copy templates
         this.fs.copyTpl(
@@ -65,28 +56,15 @@ module.exports = class extends Generator {
         );
 
         //package.json dependencies
-        const pkgJson = {
-            private: true,
-            scripts: {
-                "start": "webpack-dev-server --config rocky-web/build/webpack.config.js"
-            },
-            devDependencies: {
-                "eslint": '^3.15.0',
-            },
-            dependencies: {
-                "@types/react": "^16.1.0",
-                "@types/react-dom": "^16.0.4",
-                "react": '^16.2.0',
-                "react-dom": "^16.2.0",
-                "webpack": "^1.12.13",
-                "webpack-dev-server": "^1.13.0",
-                "webpack-merge": "^4.1.0",
-                "lodash": '^4.17.4'
-            }
-        };
-
+        const pkgJson = require(b + '/configs/packageConfig.json')
         // Extend or create package.json file in destination path
         this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
+
+        const babelrcJson = require(b + '/configs/balbelrcConfig.json');
+        this.fs.extendJSON(this.destinationPath('.babelrc'), babelrcJson);
+
+        const tsConfigJson = require(b + '/configs/tsConfig.json');
+        this.fs.extendJSON(this.destinationPath('tsconfig.json'), tsConfigJson);
     }
     install() {
         this.npmInstall();
@@ -94,8 +72,8 @@ module.exports = class extends Generator {
     end() {
         // this.spawnCommand('node', ['rocky-web/server.js']); //本地写的node脚本
         this.spawnCommand('npm', ['start']);
-        setTimeout(() => {
-            require('child_process').exec('open http://localhost:6000/index.html'); //打开浏览器
-        }, 2000)
+        // setTimeout(() => {
+        //     require('child_process').exec('open http://localhost:6000/index.html'); //打开浏览器
+        // }, 2000)
     }
 };
