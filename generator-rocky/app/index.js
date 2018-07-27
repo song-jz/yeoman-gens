@@ -14,9 +14,9 @@ module.exports = class extends Generator {
         // Calling the super constructor is important so our generator is correctly set up
         super(args, opts);
 
-        var dirs = glob.sync('+(rocky-web)');
+        var dirs = glob.sync('+(web)');
         //now _.contains has been abandoned by lodash,use _.includes
-        if (_.includes(dirs, 'rocky-web')) {
+        if (_.includes(dirs, 'web')) {
             this.log(chalk.bold.green('资源已经初始化，退出...'));
             setTimeout(function () {
                 process.exit(1);
@@ -34,14 +34,17 @@ module.exports = class extends Generator {
         //项目名字默认写成自己当前创建的文件夹
         var appname = this.appname;
         _.map(questions, function (item) {
-            if (item.name == 'projectAuthor') {
+            if (item.name == 'projectName') {
                 item.default = appname;
             }
+            return item
         })
 
         return this.prompt(questions).then(
             function (answers) {
+                console.log('我是answers', answers);
                 for (var item in answers) {
+                    console.log('我是answers item', item);
                     answers.hasOwnProperty(item) && (this[item] = answers[item]);
                 }
             }.bind(this));
@@ -50,30 +53,20 @@ module.exports = class extends Generator {
 
 
         //copy templates
-        this.fs.copyTpl(
-            this.templatePath(),
-            this.destinationPath('rocky-web')
+        this.fs.copy(
+            this.templatePath(this.projectType),  //根据user选择的类型拷贝不同模板-->web,electron...
+            this.destinationPath(),
+            { globOptions: { dot: true } }  //拷贝包括点文件
         );
 
-        //package.json dependencies
-        const pkgJson = require(b + '/configs/packageConfig.json')
-        // Extend or create package.json file in destination path
-        this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
 
-        const babelrcJson = require(b + '/configs/balbelrcConfig.json');
-        this.fs.extendJSON(this.destinationPath('.babelrc'), babelrcJson);
-
-        const tsConfigJson = require(b + '/configs/tsConfig.json');
-        this.fs.extendJSON(this.destinationPath('tsconfig.json'), tsConfigJson);
     }
     install() {
         this.npmInstall();
     }
     end() {
-        // this.spawnCommand('node', ['rocky-web/server.js']); //本地写的node脚本
-        this.spawnCommand('npm', ['start']);
-        // setTimeout(() => {
-        //     require('child_process').exec('open http://localhost:6000/index.html'); //打开浏览器
-        // }, 2000)
+        if (this.projectType == 'web') {
+            this.spawnCommand('npm', ['start']);
+        }
     }
 };

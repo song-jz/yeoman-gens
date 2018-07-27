@@ -1,8 +1,8 @@
 {
     "private": true,
     "scripts": {
-        "start": "webpack-dev-server  --mode development --open --config rocky-web/build/webpack.config.js",
-        "build": "cross-env NODE_ENV=prod webpack --mode production --config rocky-web/build/webpack.config.js"
+        "start": "webpack-dev-server  --mode development --open --config build/webpack.config.js",
+        "build": "cross-env NODE_ENV=prod webpack --mode production --config build/webpack.config.js"
     },
     "devDependencies": {
         "babel-core": "^6.26.3",
