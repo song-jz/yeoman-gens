@@ -1,14 +1,17 @@
 //Greeter,js
 import React, { Component } from 'react'
-import config from './config.json';
-import List from './components/list'
+import Demo from './components/demo'
+import 'antd/dist/antd.css'   //globally import css
 
 class Greeter extends Component {
+    constructor() {
+        super()
+    }
     render() {
         return (
             <div>
-                {config.greetText}
-                <List />
+
+                <Demo />
             </div>
         );
     }
