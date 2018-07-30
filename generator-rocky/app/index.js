@@ -33,7 +33,7 @@ module.exports = class extends Generator {
 
     prompting() {
 
-        var questions = require(b + '/configs/questionsConfig.json')
+        var questions = require(this.b + '/configs/questionsConfig.json')
         /*问题的一些处理
         ***
         ***项目名字默认写成自己当前创建的文件夹
