@@ -25,7 +25,7 @@
         "type": "input",
         "name": "projectName",
         "message": "输入项目名称",
-        "default": "hello"
+        "default": "helloWorld"
     },
     {
         "type": "input",

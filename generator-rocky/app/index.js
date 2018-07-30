@@ -1,3 +1,4 @@
+
 var Generator = require('yeoman-generator'),
     chalk = require('yeoman-generator/node_modules/chalk'),
     glob = require('yeoman-generator/node_modules/glob'),
@@ -9,6 +10,7 @@ var Generator = require('yeoman-generator'),
 
 
 module.exports = class extends Generator {
+
     // The name `constructor` is important here
     constructor(args, opts) {
         // Calling the super constructor is important so our generator is correctly set up
@@ -22,13 +24,14 @@ module.exports = class extends Generator {
                 process.exit(1);
             }, 200);
         }
+        //变量
+        this.a = this.destinationRoot();
+        this.log('根目录', this.a)
+        this.b = this.sourceRoot();
+        this.log('模板目录', this.b)
     }
 
     prompting() {
-        var a = this.destinationRoot();
-        this.log('根目录', a)
-        var b = this.sourceRoot();
-        this.log('模板目录', b)
 
         var questions = require(b + '/configs/questionsConfig.json')
         /*问题的一些处理
@@ -48,7 +51,7 @@ module.exports = class extends Generator {
             }
             return item
         })
-
+        // console.log('questions', questions)
         return this.prompt(questions).then(
             function (answers) {
                 console.log('我是answers', answers);
@@ -59,7 +62,6 @@ module.exports = class extends Generator {
             }.bind(this));
     }
     writing() {
-
 
         //copy templates
         var templatePath = this.projectType;
