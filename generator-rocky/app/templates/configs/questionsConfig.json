@@ -11,6 +11,17 @@
         ]
     },
     {
+        "type": "list",
+        "name": "webType",
+        "message": "请选择web使用的技术选型",
+        "default": "web",
+        "choices": [
+            "react",
+            "angular",
+            "vue"
+        ]
+    },
+    {
         "type": "input",
         "name": "projectName",
         "message": "输入项目名称",

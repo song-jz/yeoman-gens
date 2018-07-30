@@ -31,11 +31,20 @@ module.exports = class extends Generator {
         this.log('模板目录', b)
 
         var questions = require(b + '/configs/questionsConfig.json')
-        //项目名字默认写成自己当前创建的文件夹
+        /*问题的一些处理
+        ***
+        ***项目名字默认写成自己当前创建的文件夹
+        */
         var appname = this.appname;
         _.map(questions, function (item) {
             if (item.name == 'projectName') {
                 item.default = appname;
+            }
+            if (item.name == 'webType') {  //只有是web时候才问选用的基础框架
+                item.when = function (answers) {
+                    console.log('hah', answers)
+                    return answers.projectType == 'web' ? true : false
+                };
             }
             return item
         })
@@ -53,8 +62,13 @@ module.exports = class extends Generator {
 
 
         //copy templates
+        var templatePath = this.projectType;
+        if (this.webType) {
+            templatePath = this.projectType + '/' + this.webType
+        }
+
         this.fs.copy(
-            this.templatePath(this.projectType),  //根据user选择的类型拷贝不同模板-->web,electron...
+            this.templatePath(templatePath),  //根据user选择的类型拷贝不同模板-->web,electron...
             this.destinationPath(),
             { globOptions: { dot: true } }  //拷贝包括点文件
         );
