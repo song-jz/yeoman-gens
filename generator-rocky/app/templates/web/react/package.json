@@ -26,12 +26,16 @@
     "dependencies": {
         "@types/react": "^16.1.0",
         "@types/react-dom": "^16.0.4",
-        "typescript": "2.5.3",
+        "axios": "^0.18.0",
+        "lodash": "^4.17.4",
+        "mobx": "^5.0.3",
+        "mobx-react": "^5.2.3",
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
+        "react-router-dom": "^4.3.1",
+        "typescript": "2.5.3",
         "webpack": "^4.0.0",
         "webpack-dev-server": "^3.1.0",
-        "webpack-merge": "^4.1.0",
-        "lodash": "^4.17.4"
+        "webpack-merge": "^4.1.0"
     }
 }
