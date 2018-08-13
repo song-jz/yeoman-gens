@@ -73,7 +73,7 @@ module.exports = class extends Generator {
         this.fs.copy(
             this.templatePath(templatePath),  //根据user选择的类型拷贝不同模板-->web,electron...
             this.destinationPath(),
-            { globOptions: { dot: true, ignore: ['**/node_modules/**'] } }  //拷贝包括点文件,忽略所有node_modules
+            { globOptions: { dot: true, ignore: ['**/node_modules/**', '**/.DS_Store'] } }  //拷贝包括点文件,忽略所有node_modules,.DS_Store文件
         );
 
 
