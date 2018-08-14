@@ -66,8 +66,8 @@ module.exports = class extends Generator {
 
         //copy templates
         var templatePath = this.projectType;
-        if (this.webType) {
-            templatePath = this.projectType + '/' + this.webType
+        if (this.webType && this.clientType) {
+            templatePath = this.projectType + '/' + this.webType + '/' + this.clientType
         }
 
         this.fs.copy(
