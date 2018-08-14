@@ -1,0 +1,29 @@
+import * as React from 'react'
+import { observer } from 'mobx-react'
+import { HashRouter, Switch } from 'react-router-dom'
+import PageRouter from './router'
+import LayoutTag from './layout.css';
+import { Spin } from 'antd'
+import store from '@models/mask'
+
+@observer
+class DepositLayout extends React.Component<{}, {}>{
+
+    render() {
+        let loadingStatus = store.getLoadingStatus();
+        return (
+            <LayoutTag>
+                <HashRouter>
+                    <div className='depositFrame'>
+                        {loadingStatus ? <div>
+                            <Spin tip="加载中..." />
+                        </div> : null}
+                        <PageRouter />
+                    </div>
+                </HashRouter>
+            </LayoutTag>
+        )
+    }
+}
+
+export default DepositLayout
