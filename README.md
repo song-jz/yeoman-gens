@@ -13,6 +13,6 @@ yeoman是一个脚手架工具，可以设计丰富的交互来创建新的项�
 
 ![yeoman-arch](./generator-rocky/docs/imgs/yeoman-arch.jpg)
 
-## 2.1 React-web项目架构
+## 2.1 React-web 项目架构
 
 
