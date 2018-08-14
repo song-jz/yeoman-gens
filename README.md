@@ -1,4 +1,22 @@
+
 # yeoman-gens
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+* [yeoman-gens](#yeoman-gens)
+	* [1.项目介绍](#1项目介绍)
+		* [1.1 如何使用](#11-如何使用)
+		* [1.2 什么是yeoman](#12-什么是yeoman)
+		* [1.3 yeman项目架构](#13-yeman项目架构)
+	* [2. react-pc 项目](#2-react-pc-项目)
+		* [2.1 架构图](#21-架构图)
+		* [2.2 技术选型](#22-技术选型)
+	* [3. react-mobile 项目](#3-react-mobile-项目)
+	* [4. vue-pc 项目](#4-vue-pc-项目)
+
+<!-- /code_chunk_output -->
 
 ## 1.项目介绍
 
@@ -32,6 +50,16 @@ yeoman是一个脚手架工具，可以设计丰富的交互来创建新的项�
 
 ![yeoman-arch](./generator-rocky/docs/imgs/yeoman-arch.jpg)
 
-## 2.1 React-web 项目架构
+## 2. react-pc 项目
+
+### 2.1 架构图
 
 ![yeoman-arch](./generator-rocky/docs/imgs/react-arch.jpg)
+
+### 2.2 技术选型
+
+typescript,antd,mobx,styled-component。
+
+## 3. react-mobile 项目
+
+## 4. vue-pc 项目
