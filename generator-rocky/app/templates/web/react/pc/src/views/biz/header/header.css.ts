@@ -6,6 +6,7 @@ const HeaderTag = styled.div`
     width:100%;
     height:64px;
     background:blue;
+    color:white;
 }
 `
 
