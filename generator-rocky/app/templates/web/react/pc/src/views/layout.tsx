@@ -10,7 +10,7 @@ import store from '@models/mask'
 class DepositLayout extends React.Component<{}, {}>{
 
     render() {
-        let loadingStatus = store.getLoadingStatus();
+        let loadingStatus = store.maskStore.loading;
         return (
             <LayoutTag>
                 <HashRouter>
