@@ -30,7 +30,7 @@ cd yeoman-gens/generator-rocky
 npm link
 ```
 
-然后只要想创建一个项目，比如myapp:
+然后只要想创建一个项目，比如myapp
 
 ```shell
  mkdir myapp
