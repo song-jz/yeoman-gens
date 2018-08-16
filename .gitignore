@@ -1,6 +1,8 @@
 
 #system files
-.DS_Store 
+.DS_Store
+# idea files
+.idea
 #below is copied from gitignore templates-->
 #https://github.com/github/gitignore/blob/master/Node.gitignore
 # Logs
