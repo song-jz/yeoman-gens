@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import SimpleEnter from '@components/simpleenter/simpleenter'
-// import loginPage from './login/login'
+import ComplexEnter from '@components/complexenter/complexenter'
+import ListOper from '@components/listoperation/listoperation'
 
 
 
@@ -9,9 +10,9 @@ class BizRouter extends React.Component<{}, {}>{
     render() {
         return (
             <Switch>
-                <Route path='/simpleEnter' component={SimpleEnter} />
-
-                {/* <Redirect to="/biz" /> */}
+                <Route path='/biz/simple' component={SimpleEnter} />
+                <Route path='/biz/complex' component={ComplexEnter} />
+                <Route path='/biz/listoper' component={ListOper} />
             </Switch>
         )
     }

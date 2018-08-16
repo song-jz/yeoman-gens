@@ -1,18 +1,21 @@
 import * as React from 'react'
+import HeaderTag from './header.css'
 
 
-
-class Nav extends React.Component<{}, {}>{
+class Header extends React.Component<{}, {}>{
     constructor(props) {
         super(props)
     }
     render() {
         return (
-            <div>
-                我是头部
-            </div>
+            <HeaderTag>
+                <div className="headerFrame">
+                    我是头部
+                </div>
+            </HeaderTag>
+
         )
     }
 
 }
-export default Nav
+export default Header
