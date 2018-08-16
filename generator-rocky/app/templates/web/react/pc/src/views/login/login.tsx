@@ -9,7 +9,7 @@ class Login extends React.Component<{}, {}>{
     render() {
         return (
             <div>
-                hello
+                登陆页面
             </div>
         )
     }
