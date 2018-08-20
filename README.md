@@ -15,6 +15,8 @@
 		* [2.2 技术选型](#22-技术选型)
 	* [3. react-mobile 项目](#3-react-mobile-项目)
 	* [4. vue-pc 项目](#4-vue-pc-项目)
+		* [4.1 架构图](#41-架构图)
+		* [4.2 技术选型](#42-技术选型)
 
 <!-- /code_chunk_output -->
 
@@ -63,3 +65,9 @@ typescript,antd,mobx,styled-component。
 ## 3. react-mobile 项目
 
 ## 4. vue-pc 项目
+
+### 4.1 架构图
+
+### 4.2 技术选型
+
+typescript,element-ui,mobx,vue-router
