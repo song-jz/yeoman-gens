@@ -91,7 +91,7 @@ module.exports = class extends Generator {
                 this.log('this.destinationRoot', this.destinationRoot())
                 this.spawnCommandSync('cd', [this.destinationRoot()])
                 this.spawnCommandSync('electron', ['.']);
-            }, 10000)
+            }, 10000)   //这里待优化
 
         }
     }
