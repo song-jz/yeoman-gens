@@ -24,6 +24,12 @@ function createWindow() {
         }))
     }
 
+    //uncomment这段代码，默认在浏览器里打开，否则在新窗口打开连接
+    // mainWindow.webContents.on('new-window', function (e, url) {
+    //     e.preventDefault();
+    //     console.log('haahh', url)
+    //     require('electron').shell.openExternal(url);
+    // });
 
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()

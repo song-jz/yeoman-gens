@@ -1,4 +1,5 @@
 import * as React from 'react'
+import ComplexTag from './complexenter.css'
 
 
 
@@ -8,10 +9,14 @@ class Biz extends React.Component<{}, {}>{
     }
     render() {
         return (
-            <div>
-                我是复杂录入页面
-            </div>
+            <ComplexTag>
+                <div className="complex">
+                    <a target="_blank" href="http://www.baidu.com">我是百度</a>
+                    <iframe src="http://www.baidu.com" className="myiframe"></iframe>
+                </div>
+            </ComplexTag>
         )
     }
 }
+
 export default Biz
