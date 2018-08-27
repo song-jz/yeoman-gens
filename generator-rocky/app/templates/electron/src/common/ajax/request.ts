@@ -4,7 +4,7 @@ import store from '@models/mask'
 import apiConf from '../api/apiConf'
 
 //api相关信息
-const { devHost, prodHost, apiList, ajaxMode } = apiConf
+const { host, apiList, ajaxMode } = apiConf
 
 //ajax通用配置
 let ajaxInstance = axios.create({
@@ -26,20 +26,14 @@ let ajaxFunc = observable({
 
         store.setLoadingStatus(true) //loading
         if (ajaxMode == 'mock') {
-            //加载延迟
-            // setTimeout(() => {
-            //     store.setLoadingStatus(false)
-            //     reqMockdata(ops)
-            // }, 0)
             store.setLoadingStatus(false)
             reqMockdata(ops)
         } else {
             ajaxInstance({
                 method: config.method,
                 data: config.data,
-                url: ajaxMode == 'dev' ? `${devHost}${config.url}` : `${prodHost}${config.url}`
+                url: `${host}${config.url}`
             }).then(response => {
-                store.setLoadingStatus(false)
                 console.log('我是请求结果', response);
                 if (response['code'] == '200') {
                     config.callback(response.data)

@@ -2,6 +2,7 @@ import { observable, action } from 'mobx'
 
 /**
  * 全局loading
+ * added by john 8-9
  */
 
 class ObservableMaskStore {
@@ -17,6 +18,8 @@ class ObservableMaskStore {
         return this.maskStore.loading = status
     }
 }
+
+
 
 const mask = new ObservableMaskStore();
 export default mask

@@ -14,7 +14,7 @@ class DepositLayout extends React.Component<{}, {}>{
         return (
             <LayoutTag>
                 <HashRouter>
-                    <div className='depositFrame'>
+                    <div className='appFrame'>
                         {loadingStatus ? <div>
                             <Spin tip="加载中..." />
                         </div> : null}
