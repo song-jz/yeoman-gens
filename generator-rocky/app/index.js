@@ -44,7 +44,7 @@ module.exports = class extends Generator {
             if (item.name == 'projectName') {
                 item.default = appname;
             }
-            if (item.name == 'webType') {  //只有是web时候才问选用的基础框架
+            if (item.name == 'webType' || item.name == 'clientType') {  //只有是web时候才问选用的基础框架
                 item.when = function (answers) {
                     console.log('hah', answers)
                     return answers.projectType == 'web' ? true : false
@@ -84,6 +84,15 @@ module.exports = class extends Generator {
     end() {
         if (this.projectType == 'web') {
             this.spawnCommand('npm', ['start']);
+        } else if (this.projectType == 'electron') {
+            this.spawnCommand('npm', ['start']);
+            setTimeout(() => {
+                this.spawnCommandSync('osascript', ['-e', 'tell application "Terminal" to do script "echo newTerminal!"']) //osx打开新terminal跑脚本
+                this.log('this.destinationRoot', this.destinationRoot())
+                this.spawnCommandSync('cd', [this.destinationRoot()])
+                this.spawnCommandSync('electron', ['.']);
+            }, 10000)
+
         }
     }
 };

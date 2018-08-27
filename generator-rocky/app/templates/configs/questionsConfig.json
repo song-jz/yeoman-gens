@@ -3,10 +3,10 @@
         "type": "list",
         "name": "projectType",
         "message": "请选择要创建的项目类型",
-        "default": "web",
+        "default": "electron",
         "choices": [
-            "web",
             "electron",
+            "web",
             "RN",
             "wechat-mini"
         ]
