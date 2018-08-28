@@ -13,10 +13,14 @@
 	* [2. react-pc](#2-react-pc)
 		* [2.1 架构图](#21-架构图)
 		* [2.2 技术选型](#22-技术选型)
-	* [3. react-mobile](#3-react-mobile)
-	* [4. vue-pc](#4-vue-pc)
+	* [3. vue-pc](#3-vue-pc)
+		* [3.1 架构图](#31-架构图)
+		* [3.2 技术选型](#32-技术选型)
+	* [4. angular-pc](#4-angular-pc)
 		* [4.1 架构图](#41-架构图)
 		* [4.2 技术选型](#42-技术选型)
+	* [5. electron](#5-electron)
+		* [5.1 架构图](#51-架构图)
 
 <!-- /code_chunk_output -->
 
@@ -46,6 +50,7 @@ npm link
 ### 1.2 什么是yeoman
 
 [yeoman介绍](http://yeoman.io)
+
 yeoman是一个脚手架工具，可以设计丰富的交互来创建新的项目，提高效率。
 
 ### 1.3 yeman项目架构
@@ -62,12 +67,22 @@ yeoman是一个脚手架工具，可以设计丰富的交互来创建新的项�
 
 typescript,antd,mobx,styled-component。
 
-## 3. react-mobile
+## 3. vue-pc
 
-## 4. vue-pc
+### 3.1 架构图
+
+### 3.2 技术选型
+
+typescript,element-ui,mobx,vue-router
+
+## 4. angular-pc
 
 ### 4.1 架构图
 
 ### 4.2 技术选型
 
-typescript,element-ui,mobx,vue-router
+typescript,rxjs,ngrx/store
+
+## 5. electron
+
+### 5.1 架构图
