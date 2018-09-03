@@ -1,8 +1,8 @@
 
 var Generator = require('yeoman-generator'),
-    chalk = require('yeoman-generator/node_modules/chalk'),
-    glob = require('yeoman-generator/node_modules/glob'),
-    _ = require('yeoman-generator/node_modules/lodash'),
+    chalk = require('chalk'),
+    glob = require('glob'),
+    _ = require('lodash'),
     fs = require('fs'),
     path = require('path');
 
