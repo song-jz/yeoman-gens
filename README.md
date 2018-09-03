@@ -31,6 +31,7 @@
 ### 1.1 如何使用
 
 ```shell
+npm install -g yo  //安装yo命令
 git clone https://github.com/johnzhu12/yeoman-gens.git
 cd yeoman-gens/generator-rocky
 npm link
@@ -51,7 +52,9 @@ npm link
 
 [yeoman介绍](http://yeoman.io)
 
-yeoman是一个脚手架工具，可以设计丰富的交互来创建新的项目，提高效率。
+[API](http://yeoman.io/generator/Generator.html)
+
+yeoman是一个脚手架工具，提供构建生态系统,可以设计丰富的交互来创建新的项目，提高效率。
 
 ### 1.3 yeman项目架构
 
