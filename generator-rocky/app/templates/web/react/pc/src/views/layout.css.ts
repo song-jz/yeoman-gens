@@ -16,6 +16,10 @@ injectGlobal`
         text-align:center !important;
     }
 }
+.yeoman-page{
+    background-color: #fff;
+    padding: 10px 1%;
+}
 `
 
 export default layout;
